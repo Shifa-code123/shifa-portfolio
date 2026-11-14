@@ -1,0 +1,110 @@
+/* book.css — the interactive project book. Pages are real DOM flipped by StPageFlip. */
+.book-wrap { display: grid; justify-items: center; gap: var(--space-6); }
+.book-stage { position: relative; width: min(100%, 1040px); container-type: inline-size; transition: transform 0.9s var(--ease-out); outline-offset: 12px; }
+.book-stage[data-mode="portrait"] { width: min(100%, 420px); }
+.book { position: relative; width: 100%; aspect-ratio: 1040 / 700; }
+.book-stage[data-mode="portrait"] .book { aspect-ratio: 520 / 700; }
+.book-stage.is-loading .book { visibility: hidden; }
+
+.book__shadow { position: absolute; left: 4%; right: 4%; bottom: -3%; height: 7%; background: radial-gradient(ellipse at center, rgba(0,0,0,0.5), transparent 70%); filter: blur(10px); pointer-events: none; }
+/* Page-stack thickness: fore-edge strips that grow on the side that has more pages. */
+.book__edge { position: absolute; top: 1.4%; bottom: 1.4%; width: calc(var(--p, 0) * 1.8cqw); background: repeating-linear-gradient(to right, #fbf9f3 0 1px, #d9d3c3 1px 2px); pointer-events: none; transition: width 0.5s var(--ease-out); }
+.book__edge--l { left: 0; transform: translateX(-100%); border-radius: 3px 0 0 3px; box-shadow: -2px 3px 6px rgba(0,0,0,0.25); }
+.book__edge--r { right: 0; transform: translateX(100%); border-radius: 0 3px 3px 0; box-shadow: 2px 3px 6px rgba(0,0,0,0.25); }
+.book-stage[data-mode="portrait"] .book__edge--l { display: none; }
+
+.page { position: relative; container-type: inline-size; overflow: hidden; background-color: #FBF9F3; color: var(--charcoal); font-size: clamp(12px, 3.1cqw, 17px); line-height: 1.5; }
+.page::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.55; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .42 0 0 0 0 .36 0 0 0 .10 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.page::after { content: ""; position: absolute; top: 0; bottom: 0; width: 9%; pointer-events: none; }
+.page--left::after { right: 0; background: linear-gradient(to left, rgba(0,0,0,0.16), transparent); }
+.page--right::after { left: 0; background: linear-gradient(to right, rgba(0,0,0,0.16), transparent); }
+.page__inner { position: relative; z-index: 1; height: 100%; padding: 8cqw 8cqw 7cqw; display: flex; flex-direction: column; gap: 3.4cqw; }
+
+/* Covers */
+.page--cover { background-color: #F4F0E7; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05); }
+.page--cover::after { content: ""; left: 0; width: 7%; background: linear-gradient(to right, rgba(0,0,0,0.18), rgba(0,0,0,0.03) 60%, transparent); }
+.page--back::after { left: auto; right: 0; background: linear-gradient(to left, rgba(0,0,0,0.18), rgba(0,0,0,0.03) 60%, transparent); }
+.cover { height: 100%; padding: 11cqw 10cqw 10cqw 12cqw; display: flex; flex-direction: column; justify-content: space-between; position: relative; z-index: 1; }
+.cover::before { content: ""; position: absolute; inset: 6cqw 6cqw 6cqw 8cqw; border: 1px solid rgba(38,59,50,0.28); pointer-events: none; }
+.cover__title { font-family: var(--font-serif); font-size: 17cqw; line-height: 0.95; letter-spacing: -0.03em; color: var(--forest); }
+.cover__sub { margin-top: 4cqw; max-width: 20ch; color: color-mix(in srgb, var(--charcoal) 70%, #F4F0E7); font-size: 3.6cqw; }
+.cover__foot { display: flex; justify-content: space-between; align-items: end; font-family: var(--font-serif); font-size: 5cqw; color: var(--forest); }
+.cover__mark { width: 7cqw; height: 7cqw; border-radius: 50%; background: var(--terracotta); }
+
+/* Left page */
+.page__no { font-family: var(--font-serif); font-size: 15cqw; line-height: 0.9; letter-spacing: -0.04em; color: var(--forest); }
+.page__shot { margin: 0; position: relative; background: #e7e2d4; }
+.page__shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.page__shot--main { flex: 1 1 auto; min-height: 0; border-radius: 2px; box-shadow: 0 8px 20px -10px rgba(0,0,0,0.35); }
+.page__shot figcaption { position: absolute; left: 3cqw; bottom: 3cqw; padding: 0.15em 0.7em; background: rgba(244,240,231,0.92); border-radius: 999px; font-size: 0.78em; }
+.page__thumbs { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 100%; gap: 3cqw; height: 22cqw; flex: none; }
+.page__thumbs .page__shot { min-height: 0; overflow: hidden; }
+.page__thumbs .page__shot { border-radius: 2px; box-shadow: 0 4px 10px -6px rgba(0,0,0,0.35); }
+
+/* Right page */
+.page__title { font-size: 8.2cqw; line-height: 1.05; color: var(--forest); }
+.page__text { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; }
+.page__rows { display: grid; gap: 2.6cqw; margin: 0; }
+.page__rows dt { font-weight: 600; font-size: 0.82em; color: var(--forest); }
+.page__rows dd { margin: 0; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+.page__chips { display: flex; flex-wrap: wrap; gap: 1.6cqw; }
+.page .chip { border-color: rgba(38,59,50,0.3); font-size: 0.82em; padding: 0.05em 0.7em; }
+.page__status { display: inline-flex; align-items: center; gap: 0.6em; font-size: 0.9em; }
+.page__status::before { content: ""; width: 0.6em; height: 0.6em; border-radius: 50%; background: var(--terracotta); }
+.page__link { margin-top: auto; align-self: flex-start; padding: 0.7em 1.3em; background: var(--forest); color: var(--ivory); border-radius: 999px; text-decoration: none; font-weight: 500; transition: background-color 0.25s, color 0.25s; }
+.page__link:hover, .page__link:focus-visible { background: var(--terracotta); color: var(--charcoal); }
+
+/* Controls */
+.book-ui { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--space-3) var(--space-5); }
+.book-ui__btn { min-width: 2.75rem; height: 2.75rem; padding: 0 var(--space-5); display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: var(--radius-pill); background: transparent; color: var(--fg); cursor: pointer; transition: background-color 0.25s, color 0.25s, border-color 0.25s, opacity 0.25s; }
+.book-ui__btn:hover:not(:disabled) { background: var(--ivory); color: var(--forest); }
+.book-ui__btn:disabled { opacity: 0.35; cursor: default; }
+.book-ui__btn--primary { background: var(--ivory); color: var(--forest); border-color: var(--ivory); font-weight: 500; }
+.book-ui__btn--primary:hover:not(:disabled) { background: var(--terracotta); border-color: var(--terracotta); color: var(--charcoal); }
+.book-ui__count { min-width: 9rem; text-align: center; color: var(--fg-muted); font-size: var(--step--1); }
+.book-hint { color: var(--fg-muted); font-size: var(--step--1); text-align: center; }
+.book-fallback { display: grid; gap: var(--space-4); }
+
+@media (prefers-reduced-motion: reduce) { .book-stage, .book__edge { transition: none; } }
+
+/* Placeholder text sits on ivory paper, so it needs a dark muted tone (not the dark section's light one). */
+.page .is-placeholder { color: #666860; outline-color: rgba(38, 59, 50, 0.3); }
+.page__title.is-placeholder, .page__title .is-placeholder { color: #5d6a62; }
+
+/* ---------- Typing layer ---------- */
+.page__no, .page__shot figcaption { transition: opacity 0.6s; }
+.page__shot img { transition: clip-path 0.9s var(--ease-out), transform 1.3s var(--ease-out); }
+.page.is-pending .page__no, .page.is-pending .page__shot figcaption { opacity: 0; }
+.page--left.is-pending .page__shot img { clip-path: inset(0 100% 0 0); transform: scale(1.06); }
+.page--right.is-pending .page__title, .page--right.is-pending .page__text, .page--right.is-pending .page__rows dd,
+.page--right.is-pending .page__status, .page--right.is-pending .page__chips, .page--right.is-pending .page__link { visibility: hidden; }
+.ty-rest { visibility: hidden; }
+.ty-wait { opacity: 0; transform: translateY(6px); transition: opacity 0.5s, transform 0.5s var(--ease-out); }
+.ty-wait.ty-in { opacity: 1; transform: none; }
+.ty-caret { display: inline-block; width: 0; height: 1em; margin-right: -2px; border-left: 2px solid var(--terracotta); vertical-align: -0.12em; animation: ty-blink 1s steps(1) infinite; }
+@keyframes ty-blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .ty-caret { animation: none; } }
+
+/* ---------- Readability and mobile controls ---------- */
+.book-stage[data-mode="portrait"] .page { font-size: clamp(13px, 3.9cqw, 17px); }
+.book-stage[data-mode="portrait"] .page__text { -webkit-line-clamp: 3; }
+.book-stage[data-mode="portrait"] .page__rows dd { -webkit-line-clamp: 2; }
+.book__shadow { height: 9%; bottom: -4.5%; opacity: 0.9; }
+@media (max-width: 600px) {
+  .book-ui { display: grid; grid-template-columns: 3rem 1fr 3rem; gap: var(--space-3); width: 100%; max-width: 420px; }
+  .book-ui__btn { min-height: 3rem; }
+  .book-ui__btn--primary { grid-column: 1 / -1; }
+  .book-ui__count { min-width: 0; }
+  .book-hint { max-width: 32ch; }
+}
+
+/* ---------- Sound toggle (ARISE upgrade) ---------- */
+.book-ui__btn--sound { gap: 0.5rem; font-size: var(--step--1); }
+.book-ui__btn--sound .snd-off { display: none; }
+.book-ui__btn--sound.is-off .snd-off { display: inline; }
+.book-ui__btn--sound.is-off .snd-on { display: none; }
+.book-ui__btn--sound.is-off { opacity: 0.75; }
+@media (max-width: 600px) { .book-ui__btn--sound { grid-column: 1 / -1; } }
+/* The closed book slides sideways by 25% of its width; clip that so the page never gains a horizontal scrollbar. */
+#projects { overflow-x: clip; }

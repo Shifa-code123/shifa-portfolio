@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found — Shifa</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#263B32">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23263B32'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23C58B69'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Hanken+Grotesk:wght@300..700&display=swap">
+  <!--
+    GitHub Pages serves THIS file for every unknown URL, from any depth (/nope, /case-studies/nope, ...).
+    Because of that, nothing here uses relative links: styles and the illustration are inline, and the Home button is
+    worked out by the script below (or set it yourself in HOME_URL).
+  -->
+  <style>
+    :root { --ivory:#F4F0E7; --sage:#A8B5A0; --forest:#263B32; --terracotta:#C58B69; --charcoal:#292B27;
+      --font-serif:"Fraunces","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; --font-sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+      --ease-out:cubic-bezier(0.22,1,0.36,1); --gutter:clamp(1.25rem,4vw,3rem); }
+    *,*::before,*::after { box-sizing:border-box; }
+    html { -webkit-text-size-adjust:100%; }
+    body { margin:0; min-height:100vh; min-height:100svh; background:var(--forest); color:var(--ivory); font-family:var(--font-sans); font-size:clamp(1rem,.96rem + .2vw,1.125rem); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:clip; display:grid; grid-template-rows:auto 1fr auto; }
+    a { color:inherit; }
+    :focus-visible { outline:2px solid var(--ivory); outline-offset:3px; border-radius:2px; }
+    .top { padding:1.25rem var(--gutter); display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+    .brand { font-family:var(--font-serif); font-size:clamp(1.5rem,1.3rem + 1vw,2rem); letter-spacing:-.02em; text-decoration:none; }
+    .code { font-size:.8125rem; letter-spacing:.14em; text-transform:uppercase; color:color-mix(in srgb,var(--ivory) 70%,var(--forest)); }
+    main { width:100%; max-width:80rem; margin-inline:auto; padding:clamp(1rem,4vw,3rem) var(--gutter); display:grid; grid-template-columns:minmax(0,6fr) minmax(0,6fr); gap:clamp(1.5rem,5vw,4rem); align-items:center; }
+    .copy { display:grid; gap:1.25rem; justify-items:start; }
+    .eyebrow { font-family:var(--font-serif); font-style:italic; color:var(--terracotta); font-size:clamp(1.25rem,1.15rem + .5vw,1.5rem); }
+    h1 { margin:0; font-family:var(--font-serif); font-weight:400; font-size:clamp(2.1rem,1.4rem + 3.4vw,4.1rem); line-height:1.05; letter-spacing:-.025em; text-wrap:balance; max-width:16ch; }
+    .lede { margin:0; max-width:40ch; color:color-mix(in srgb,var(--ivory) 80%,var(--forest)); font-size:clamp(1.0625rem,1rem + .4vw,1.25rem); line-height:1.5; }
+    .lost { margin:0; font-size:.875rem; color:color-mix(in srgb,var(--ivory) 62%,var(--forest)); overflow-wrap:anywhere; }
+    .lost code { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; background:color-mix(in srgb,var(--ivory) 10%,transparent); padding:.1em .45em; border-radius:4px; }
+    .actions { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:.5rem; }
+    .btn { display:inline-flex; align-items:center; gap:.65rem; padding:.9rem 1.6rem; border-radius:999px; border:1px solid transparent; background:var(--ivory); color:var(--forest); font:inherit; font-weight:500; text-decoration:none; cursor:pointer; transition:background-color .3s,color .3s,border-color .3s,transform .35s var(--ease-out); }
+    .btn:hover,.btn:focus-visible { background:var(--terracotta); color:var(--charcoal); transform:translateY(-2px); }
+    .btn--ghost { background:transparent; color:var(--ivory); border-color:color-mix(in srgb,var(--ivory) 45%,transparent); }
+    .btn--ghost:hover,.btn--ghost:focus-visible { background:transparent; color:var(--ivory); border-color:var(--ivory); }
+    .btn svg { width:1.1em; height:1.1em; flex:none; }
+    .art { width:100%; max-width:36rem; justify-self:center; }
+    .art svg { width:100%; height:auto; overflow:visible; }
+    footer { padding:1.25rem var(--gutter) 1.75rem; font-size:.875rem; color:color-mix(in srgb,var(--ivory) 62%,var(--forest)); display:flex; justify-content:space-between; flex-wrap:wrap; gap:.5rem 1.5rem; }
+
+    /* Illustration motion — all of it is subtle and stops for reduced-motion */
+    .loose { transform-origin:468px 150px; animation:loose-float 6s ease-in-out infinite; }
+    .loose-shadow { transform-origin:center; animation:loose-shadow 6s ease-in-out infinite; }
+    .flutter { transform-origin:318px 250px; animation:flutter 5s ease-in-out infinite; }
+    .twinkle { animation:twinkle 3.2s ease-in-out infinite; } .twinkle.b { animation-delay:1s; } .twinkle.c { animation-delay:2s; }
+    .trail { stroke-dasharray:3 9; animation:trail 2.4s linear infinite; }
+    .q { animation:bob 3s ease-in-out infinite; transform-origin:center; transform-box:fill-box; }
+    @keyframes loose-float { 0%,100% { transform:translateY(0) rotate(-4deg); } 50% { transform:translateY(-14px) rotate(3deg); } }
+    @keyframes loose-shadow { 0%,100% { opacity:.28; transform:scale(1); } 50% { opacity:.16; transform:scale(.86); } }
+    @keyframes flutter { 0%,100% { transform:skewY(0deg) scaleX(1); } 50% { transform:skewY(-2.2deg) scaleX(.985); } }
+    @keyframes twinkle { 0%,100% { opacity:.25; transform:scale(.8); } 50% { opacity:1; transform:scale(1.1); } }
+    @keyframes trail { to { stroke-dashoffset:-24; } }
+    @keyframes bob { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-4px); } }
+    .twinkle { transform-box:fill-box; transform-origin:center; }
+    @media (prefers-reduced-motion:reduce) { .loose,.loose-shadow,.flutter,.twinkle,.trail,.q { animation:none; } .btn { transition:none; } }
+
+    @media (max-width:820px) {
+      main { grid-template-columns:minmax(0,1fr); }
+      .art { order:-1; max-width:26rem; }
+      h1 { max-width:none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" id="brand" href="/">Shifa</a>
+    <span class="code">Error 404</span>
+  </header>
+
+  <main id="main">
+    <div class="copy">
+      <p class="eyebrow">A missing page</p>
+      <h1>Oops! Looks like this page got lost in my portfolio.</h1>
+      <p class="lede">Even the best stories sometimes lose a page. Let&rsquo;s get you back on track!</p>
+      <p class="lost" id="lost" hidden>You asked for <code id="lost-path"></code></p>
+      <div class="actions">
+        <a class="btn" id="btn-home" href="/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg>
+          Take Me Home
+        </a>
+        <button class="btn btn--ghost" id="btn-back" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          Go Back
+        </button>
+      </div>
+    </div>
+
+    <div class="art" role="img" aria-label="An open book with one page missing; the loose page floats away above it.">
+      <svg viewBox="0 0 640 440" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="gutter-l" x1="1" x2="0"><stop offset="0" stop-color="#000" stop-opacity=".16"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
+          <linearGradient id="gutter-r" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".16"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
+        </defs>
+        <!-- ground shadow -->
+        <ellipse cx="320" cy="392" rx="250" ry="17" fill="#000" opacity=".28"/>
+        <!-- cover -->
+        <path d="M52 168 C52 154 62 144 76 146 C150 154 262 172 320 214 C378 172 490 154 564 146 C578 144 588 154 588 168 L588 334 C588 346 578 354 566 352 C494 344 380 358 320 392 C260 358 146 344 74 352 C62 354 52 346 52 334 Z" fill="#1c2c25"/>
+        <path d="M52 334 C52 346 62 354 74 352 C146 344 260 358 320 392 C380 358 494 344 566 352 C578 354 588 346 588 334 L588 344 C588 356 578 364 566 362 C494 354 380 368 320 402 C260 368 146 354 74 362 C62 364 52 356 52 344 Z" fill="#162720"/>
+        <!-- left page: text lines -->
+        <path d="M66 166 C150 172 252 190 316 232 L316 380 C252 342 150 330 66 336 Z" fill="#FBF9F3"/>
+        <path d="M66 166 C150 172 252 190 316 232 L316 380 C252 342 150 330 66 336 Z" fill="url(#gutter-l)"/>
+        <g stroke="#A8B5A0" stroke-width="5" stroke-linecap="round" opacity=".85" fill="none">
+          <path d="M96 200 C150 205 205 218 262 244"/><path d="M96 226 C150 231 205 244 262 270"/><path d="M96 252 C150 257 200 268 236 288"/>
+          <path d="M96 292 C140 296 190 306 226 322"/>
+        </g>
+        <circle cx="104" cy="318" r="5.5" fill="#C58B69"/>
+        <!-- right page: the missing page leaves an outline, a ragged stub at the spine and a question mark -->
+        <g class="flutter">
+          <path d="M324 232 C388 190 490 172 574 166 L574 336 C490 330 388 342 324 380 Z" fill="#F1EDE2"/>
+          <path d="M324 232 C388 190 490 172 574 166 L574 336 C490 330 388 342 324 380 Z" fill="url(#gutter-r)"/>
+          <path d="M376 258 C420 230 484 214 540 208 L540 306 C484 304 424 316 376 340 Z" fill="none" stroke="#A8B5A0" stroke-width="2.5" stroke-dasharray="7 7" stroke-linecap="round"/>
+          <text class="q" x="456" y="288" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="74" fill="#C58B69" opacity=".9">?</text>
+        </g>
+        <!-- torn stub at the spine -->
+        <path d="M312 228 L326 232 L320 246 L329 258 L319 270 L328 284 L319 296 L327 310 L318 322 L326 336 L318 350 L326 366 L318 380 L310 372 L310 228 Z" fill="#E4DFD0"/>
+        <path d="M320 214 L320 392" stroke="#162720" stroke-width="2" opacity=".6"/>
+        <!-- trail from the book to the loose page -->
+        <path class="trail" d="M338 226 C386 160 430 150 462 150" fill="none" stroke="#A8B5A0" stroke-width="2.5" stroke-linecap="round" opacity=".7"/>
+        <!-- loose page floating away -->
+        <ellipse class="loose-shadow" cx="468" cy="396" rx="48" ry="7" fill="#000" opacity=".28"/>
+        <g class="loose">
+          <g transform="translate(468 150)">
+            <path d="M-52 -64 C-20 -72 22 -70 52 -60 L58 52 C26 62 -22 62 -56 54 Z" fill="#FBF9F3" stroke="#d9d3c3" stroke-width="1.5"/>
+            <path d="M52 -60 L58 -40 L38 -42 Z" fill="#E4DFD0"/>
+            <text x="2" y="-4" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="44" fill="#263B32">404</text>
+            <g stroke="#A8B5A0" stroke-width="4" stroke-linecap="round"><path d="M-30 20 H30"/><path d="M-30 34 H14"/></g>
+            <circle cx="-36" cy="-42" r="4.5" fill="#C58B69"/>
+          </g>
+        </g>
+        <!-- sparkles -->
+        <g fill="#C58B69"><circle class="twinkle" cx="548" cy="86" r="4"/><circle class="twinkle b" cx="396" cy="72" r="3"/></g>
+        <g fill="#A8B5A0"><circle class="twinkle c" cx="582" cy="196" r="3.5"/><circle class="twinkle b" cx="110" cy="110" r="3.5"/><circle class="twinkle" cx="196" cy="70" r="2.5"/></g>
+      </svg>
+    </div>
+  </main>
+
+  <footer>
+    <span>&copy; <span id="year">2026</span> Shifa</span>
+    <span>The rest of the story is still waiting for you.</span>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+      /* ----- Settings ---------------------------------------------------------------------------------------------
+         HOME_URL: leave "" and the page works out your site's homepage by itself (user site, project site, custom domain, localhost).
+                   Or set it, e.g. "https://yourname.github.io/portfolio/".  */
+      var HOME_URL = "";
+      /* ------------------------------------------------------------------------------------------------------------ */
+      var home = document.getElementById('btn-home'), brand = document.getElementById('brand'), back = document.getElementById('btn-back');
+      function setHome(u) { home.setAttribute('href', u); brand.setAttribute('href', u); }
+
+      var path = window.location.pathname, segs = path.split('/').filter(Boolean);
+      if (HOME_URL) { setHome(HOME_URL); }
+      else {
+        setHome('/');                                               /* user site, custom domain, localhost */
+        if (/\.github\.io$/i.test(window.location.hostname) && segs.length) {
+          /* Project site (user.github.io/repo/...): the first path segment is the repo if <segment>/index.html exists. */
+          var repo = '/' + segs[0] + '/';
+          if (window.fetch) fetch(repo + 'index.html', { method: 'HEAD' }).then(function (r) { if (r.ok) setHome(repo); }, function () {});
+        }
+      }
+
+      back.addEventListener('click', function () {
+        var sameSite = document.referrer && document.referrer.indexOf(window.location.origin) === 0;
+        if (window.history.length > 1 && sameSite) window.history.back(); else window.location.href = home.getAttribute('href');
+      });
+
+      if (path && path !== '/' && !/\/404\.html$/.test(path)) {
+        document.getElementById('lost-path').textContent = path;          /* textContent: never injected as HTML */
+        document.getElementById('lost').hidden = false;
+      }
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

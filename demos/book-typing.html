@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo — project book with typing layer</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/book.css">
+  <link rel="stylesheet" href="../css/cursor.css">
+</head>
+<body>
+  <!-- Isolated demo: only the book. Same files and markup as the main site. -->
+  <section class="section" data-theme="dark" style="min-height:100svh">
+    <div class="container">
+      <div class="book-wrap" data-book>
+        <div class="book-stage" data-mode="landscape" tabindex="0" role="group" aria-label="Project book">
+          <div class="book__edge book__edge--l"></div><div class="book__edge book__edge--r"></div><div class="book__shadow"></div>
+        </div>
+        <div class="book-ui">
+          <button class="book-ui__btn" type="button" data-book-prev aria-label="Previous page">&larr;</button>
+          <span class="book-ui__count" data-book-count aria-live="polite">Closed</span>
+          <button class="book-ui__btn" type="button" data-book-next aria-label="Next page">&rarr;</button>
+          <button class="book-ui__btn book-ui__btn--primary" type="button" data-book-toggle data-action="open">Open book</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../js/config/content.js"></script>
+  <script src="../js/util.js"></script>
+  <script src="../js/vendor/page-flip.browser.js"></script>
+  <script src="../js/book.js"></script>
+  <script src="../js/cursor.js"></script>
+</body>
+</html>

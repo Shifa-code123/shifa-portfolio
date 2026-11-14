@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shifa — Portfolio</title>
+  <meta name="description" content="Portfolio of Shifa, a Computer Engineering student building thoughtful digital products.">
+  <meta name="theme-color" content="#F4F0E7">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23263B32'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23C58B69'/%3E%3C/svg%3E">
+  <script>document.documentElement.classList.add('js');
+    /* Book loader: only if the page is still loading after 0.2s, and only once per tab session. */
+    (function () { var d = document.documentElement, seen; try { seen = sessionStorage.getItem('portfolio-loaded'); } catch (e) {}
+      if (!seen) setTimeout(function () { if (document.readyState !== 'complete') d.classList.add('show-loader'); }, 200); })();</script>
+
+  <!-- Fonts: if these fail to load, the fallback stacks in tokens.css take over. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Hanken+Grotesk:wght@300..700&display=swap">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/book.css">
+  <link rel="stylesheet" href="css/roadmap.css">
+  <link rel="stylesheet" href="css/experience.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/skills.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/cursor.css">
+  <link rel="stylesheet" href="css/enhancements.css">
+  <link rel="stylesheet" href="css/ink-within.css">
+</head>
+<body>
+  <div class="page-loader" aria-hidden="true">
+    <div class="page-loader__book"><span class="page-loader__cover"></span><span class="page-loader__pg page-loader__pg--l"></span><span class="page-loader__pg page-loader__pg--r"></span><span class="page-loader__flip"></span><span class="page-loader__flip"></span><span class="page-loader__flip"></span><span class="page-loader__mark"></span></div>
+    <p class="page-loader__name">Shifa</p>
+  </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-nav" data-nav data-theme="light">
+    <div class="container site-nav__inner">
+      <a class="site-nav__brand" href="#home" data-bind="profile.name">Shifa</a>
+      <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle>
+        <span class="site-nav__bars" aria-hidden="true"></span>
+        <span class="visually-hidden" data-nav-toggle-label>Open menu</span>
+      </button>
+      <nav class="site-nav__menu" id="nav-menu" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="#home" data-nav-link>Home</a></li>
+          <li><a class="site-nav__link" href="#about" data-nav-link>About</a></li>
+          <li><a class="site-nav__link" href="#projects" data-nav-link>Projects</a></li>
+          <li><a class="site-nav__link" href="#education" data-nav-link>Education</a></li>
+          <li><a class="site-nav__link" href="#experience" data-nav-link>Internship</a></li>
+          <li><a class="site-nav__link" href="#skills" data-nav-link>Skills</a></li>
+          <li><a class="site-nav__link" href="#contact" data-nav-link>Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section section--hero" id="home" data-theme="light" aria-labelledby="home-title">
+      <div class="container">
+        <div class="hero" data-hero data-parallax>
+          <div class="hero__intro">
+            <p class="hero__role" data-bind="profile.role">[Add your professional title]</p>
+            <p class="hero__tagline" data-bind="profile.tagline">[Add a one-sentence introduction]</p>
+            <div class="hero__actions">
+              <a class="btn" href="#projects" data-magnetic>Explore projects</a>
+              <a class="btn btn--ghost" href="#contact" data-magnetic>Get in touch</a>
+              <a class="btn btn--ghost" href="assets/resume/Shifa-Resume.pdf" download data-resume data-magnetic><svg class="btn__ico" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span data-resume-label>Download resume</span></a>
+            </div>
+          </div>
+          <h1 class="hero__name" id="home-title" data-bind="profile.name">Shifa</h1>
+          <!-- Transparent PNG, no frame. Replace assets/images/hero-portrait.png (or change the path in js/config/content.js). -->
+          <figure class="hero__portrait" data-hero-eyes>
+            <img class="hero__portrait-image" src="assets/images/hero-portrait.png" data-bind-src="profile.heroPortrait" width="1000" height="1200" alt="Illustrated portrait of Shifa" fetchpriority="high">
+            <span class="hero__eyes" aria-hidden="true">
+              <img class="hero__eye-base" src="assets/images/hero-eye-base.png" alt="">
+              <img class="hero__iris hero__iris--left" src="assets/images/hero-iris-1.png" alt="">
+              <img class="hero__iris hero__iris--right" src="assets/images/hero-iris-2.png" alt="">
+            </span>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about" data-theme="sage" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title reveal" id="about-title">About me</h2>
+        </div>
+        <div class="about">
+          <div class="about__stage" data-parallax>
+            <!-- <p class="about__name" aria-hidden="true" data-bind="profile.name">Shifa</p> -->
+            <!-- Transparent full-body PNG, no frame. Tune --hand-x / --hand-y in css/about.css to match your photo. -->
+            <figure class="about__figure"><img src="assets/images/about-portrait.png" data-bind-src="profile.aboutPortrait" width="800" height="1500" alt="Full-length portrait of Shifa" loading="lazy"></figure>
+          </div>
+          <div class="about__copy">
+            <p class="about__lead" data-bind="about.intro">[Add a short personal introduction]</p>
+            <div><h3>Professional interests</h3><div data-about-interests></div></div>
+            <div><h3>How I learn and build</h3><p data-bind="about.approach">[Add your approach to learning and building products]</p></div>
+            <div><h3>Design and development philosophy</h3><p data-bind="about.philosophy">[Add your design and development philosophy]</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects" data-theme="dark" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title reveal" id="projects-title">Projects</h2>
+          <p class="section__lede">A book of selected work. Open it, turn the pages, and follow a link to read the full case study.</p>
+        </div>
+        <div class="book-wrap" data-book>
+          <div class="book-stage" data-mode="landscape" tabindex="0" role="group" aria-label="Project book. Use the left and right arrow keys to turn pages, Escape to close.">
+            <div class="book__edge book__edge--l"></div><div class="book__edge book__edge--r"></div><div class="book__shadow"></div>
+          </div>
+          <div class="book-ui">
+            <button class="book-ui__btn" type="button" data-book-prev aria-label="Previous page">&larr;</button>
+            <span class="book-ui__count" data-book-count aria-live="polite">Closed</span>
+            <button class="book-ui__btn" type="button" data-book-next aria-label="Next page">&rarr;</button>
+            <button class="book-ui__btn book-ui__btn--primary" type="button" data-book-toggle data-action="open">Open book</button>
+            <button class="book-ui__btn book-ui__btn--sound" type="button" data-book-sound aria-pressed="true" aria-label="Page-turn sound">
+              <svg class="book-ui__ico" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path class="snd-on" d="M15.5 8.5a5 5 0 0 1 0 7"/><path class="snd-on" d="M19 5a10 10 0 0 1 0 14"/><path class="snd-off" d="m22 9-6 6"/><path class="snd-off" d="m16 9 6 6"/></svg>
+              <span data-sound-label>Sound on</span>
+            </button>
+          </div>
+          <p class="book-hint">Click the cover to open it, then drag a page corner, swipe, or use the arrow keys.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education" data-theme="light" aria-labelledby="education-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title reveal" id="education-title">Education journey</h2>
+          <p class="section__lede">The road so far, one milestone at a time.</p>
+        </div>
+        <div class="roadmap" data-roadmap></div>
+      </div>
+    </section>
+
+    <section class="section" id="experience" data-theme="sage" aria-labelledby="experience-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title reveal" id="experience-title">Internship &amp; achievements</h2>
+        </div>
+        <div class="xp" data-experience></div>
+      </div>
+    </section>
+
+    <section class="section" id="skills" data-theme="light" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title reveal" id="skills-title">Skills &amp; tools</h2>
+        </div>
+        <div class="skills-stage" data-skills-stage>
+          <figure class="skills-hero" data-skills-hero>
+            <picture>
+              <source srcset="assets/images/skills-character.webp" type="image/webp">
+              <img class="skills-hero__img" src="assets/images/skills-character.png" width="823" height="1294" alt="Illustration of Shifa in a green embroidered dress and hijab, holding an open laptop" loading="lazy" decoding="async">
+            </picture>
+            <span class="skills-hero__emit" data-skills-emit aria-hidden="true"></span>
+          </figure>
+          <div class="skills" data-skills></div>
+          <div class="skills-fly" data-skills-fly aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact" data-theme="dark" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title reveal" id="contact-title">Contact</h2>
+          <p class="section__lede">Interested in an internship, a project, or just a conversation? Get in touch.</p>
+        </div>
+        <div class="contact">
+          <div data-contact-email></div>
+          <div class="contact__resume"><a class="btn btn--ghost" href="assets/resume/Shifa-Resume.pdf" download data-resume><svg class="btn__ico" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span data-resume-label>Download resume</span></a></div>
+          <ul class="contact__links" data-contact-links></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="footer" data-theme="dark" data-footer>
+    <div class="container">
+      <div class="footer__lead">
+        <p class="footer__closing" data-bind="footer.closing">[Add a short closing statement]</p>
+        <div data-footer-availability></div>
+      </div>
+
+      <div class="footer__grid">
+        <section class="footer__col" aria-labelledby="footer-id">
+          <h2 class="footer__name" id="footer-id" data-bind="profile.name">Shifa</h2>
+          <p class="footer__role" data-bind="profile.role">[Add your professional title]</p>
+          <p class="footer__desc" data-bind="profile.tagline">[Add a one-sentence introduction]</p>
+        </section>
+
+        <nav class="footer__col" aria-labelledby="footer-nav">
+          <h2 class="footer__h" id="footer-nav">Explore</h2>
+          <ul class="footer__links">
+            <li><a class="footer__link" href="#home">Home</a></li>
+            <li><a class="footer__link" href="#about">About</a></li>
+            <li><a class="footer__link" href="#projects">Projects</a></li>
+            <li><a class="footer__link" href="#education">Education</a></li>
+            <li><a class="footer__link" href="#experience">Experience</a></li>
+            <li><a class="footer__link" href="#skills">Skills</a></li>
+            <li><a class="footer__link" href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <section class="footer__col" aria-labelledby="footer-connect">
+          <h2 class="footer__h" id="footer-connect">Connect</h2>
+          <ul class="footer__connect" data-footer-connect></ul>
+        </section>
+
+        <section class="footer__col" aria-labelledby="footer-contact">
+          <h2 class="footer__h" id="footer-contact">Contact</h2>
+          <ul class="footer__details" data-footer-contact></ul>
+        </section>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; <span data-year>2026</span> <span data-bind="profile.name">Shifa</span>. All rights reserved.</p>
+        <p>Designed and developed by <span data-bind="profile.name">Shifa</span></p>
+        <a class="footer__top" href="#home"><span>Back to top</span><svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config/content.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/effects.js"></script>
+  <script src="js/eye-tracking.js"></script>
+  <script src="js/vendor/page-flip.browser.js"></script>
+  <script src="js/book.js"></script>
+  <script src="js/book-sound.js"></script>
+  <script src="js/roadmap.js"></script>
+  <script src="js/experience.js"></script>
+  <script src="js/about.js"></script>
+  <script src="js/icons.js"></script>
+  <script src="js/skills.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/site-ui.js"></script>
+  <script src="js/config/ink-within.js"></script>
+  <script src="js/ink-glyphs.js"></script>
+  <script src="js/ink-within.js"></script>
+</body>
+</html>

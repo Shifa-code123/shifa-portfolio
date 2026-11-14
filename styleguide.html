@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Style guide — Shifa portfolio</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23263B32'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Hanken+Grotesk:wght@300..700&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/cursor.css">
+  <link rel="stylesheet" href="css/styleguide.css">
+</head>
+<body>
+  <main id="main">
+    <section class="sg" data-theme="light">
+      <div class="container">
+        <h2>Colour</h2>
+        <div class="sg__swatches">
+          <div class="sg__swatch sg__swatch--bordered" style="background:var(--ivory);color:var(--charcoal)">Warm Ivory<br>#F4F0E7</div>
+          <div class="sg__swatch" style="background:var(--sage);color:var(--forest)">Muted Sage<br>#A8B5A0</div>
+          <div class="sg__swatch" style="background:var(--forest);color:var(--ivory)">Deep Forest<br>#263B32</div>
+          <div class="sg__swatch" style="background:var(--terracotta);color:var(--charcoal)">Warm Terracotta<br>#C58B69</div>
+          <div class="sg__swatch" style="background:var(--charcoal);color:var(--ivory)">Charcoal<br>#292B27</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sg" data-theme="light">
+      <div class="container sg__stack">
+        <h2>Type</h2>
+        <p style="font-family:var(--font-serif);font-size:var(--step-5);line-height:1">Considered, quiet</p>
+        <h3 style="font-size:var(--step-3)">A heading in the serif</h3>
+        <p>Body text is set in the sans at a comfortable measure. It should read calmly on ivory, with generous line height and no more than about seventy characters per line.</p>
+        <p style="font-size:var(--step--1);color:var(--fg-muted)">Small supporting text uses the muted tone.</p>
+      </div>
+    </section>
+
+    <section class="sg" data-theme="sage">
+      <div class="container">
+        <h2>Spacing</h2>
+        <div class="sg__spacing">
+          <div class="sg__bar" style="width:var(--space-2)"></div>
+          <div class="sg__bar" style="width:var(--space-4)"></div>
+          <div class="sg__bar" style="width:var(--space-6)"></div>
+          <div class="sg__bar" style="width:var(--space-8)"></div>
+          <div class="sg__bar" style="width:var(--space-10)"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sg" data-theme="light" id="cursor-light">
+      <div class="container sg__stack">
+        <h2>Glass cursor (light)</h2>
+        <div class="sg__row">
+          <a class="btn" href="#cursor-light">Plain hover</a>
+          <a class="btn btn--ghost" href="#cursor-light" data-cursor-label="OPEN BOOK">Label: open book</a>
+          <a class="btn btn--ghost" href="#cursor-light" data-cursor-label="VIEW PROJECT">Label: view project</a>
+          <label class="visually-hidden" for="sg-light">Text field</label>
+          <input id="sg-light" type="text" placeholder="Text field keeps the native cursor">
+        </div>
+        <p id="sg-text">Select this sentence with the mouse: the native pointer and text selection are untouched by the orb.</p>
+      </div>
+    </section>
+
+    <section class="sg" data-theme="dark" id="cursor-dark">
+      <div class="container">
+        <h2>Glass cursor (dark)</h2>
+        <div class="sg__row">
+          <a class="btn" href="#cursor-dark">Plain hover</a>
+          <a class="btn btn--ghost" href="#cursor-dark" data-cursor-label="VIEW PROJECT">Label: view project</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="js/cursor.js"></script>
+</body>
+</html>

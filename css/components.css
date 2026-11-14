@@ -1,0 +1,43 @@
+/* components.css — reusable pieces */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0.9rem 1.6rem;
+  background: var(--fg);
+  color: var(--bg);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+.btn:hover { background: var(--accent); border-color: var(--accent); color: var(--charcoal); }
+.btn--ghost {
+  background: transparent;
+  color: var(--fg);
+  border-color: color-mix(in srgb, var(--fg) 40%, transparent);
+}
+.btn--ghost:hover { background: transparent; border-color: var(--fg); color: var(--fg); }
+
+/* Stage placeholders: clearly marked, easy to delete when the real section lands. */
+.shell { display: grid; gap: var(--space-5); justify-items: start; }
+.shell__title { font-size: var(--step-5); }
+.shell__note {
+  max-width: 38ch;
+  padding: var(--space-4) var(--space-5);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-md);
+  color: var(--fg-muted);
+  font-size: var(--step--1);
+}
+
+/* Placeholder text from content.js ("[Add ...]") is visibly marked so nothing looks final by accident. */
+.is-placeholder { color: var(--fg-muted); outline: 1px dashed var(--line); outline-offset: 3px; border-radius: var(--radius-sharp); }
+.chip { display: inline-block; padding: 0.2em 0.8em; border: 1px solid var(--line); border-radius: var(--radius-pill); font-size: var(--step--1); line-height: 1.6; }
+.section__head { display: grid; gap: var(--space-3); margin-bottom: var(--space-8); max-width: 44rem; }
+.section__title { font-size: var(--step-4); }
+.section__lede { color: var(--fg-muted); max-width: 52ch; }
+
+.btn[data-magnetic] { transition: transform 0.3s var(--ease-out), background-color 0.3s, color 0.3s, border-color 0.3s; will-change: transform; }
